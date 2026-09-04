@@ -1,0 +1,1550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>LONG HAUL — Cargo Train Snake</title>
+<meta name="description" content="Snake, reskinned as a freight train. Drive the locomotive, couple shipping containers into wagons, and never cross your own line. One HTML file, no downloads, no dependencies.">
+<meta name="theme-color" content="#4e8f45">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LONG HAUL — Cargo Train Snake">
+<meta property="og:description" content="Snake, reskinned as a freight train. Couple containers, grow the train, never cross your own line.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LONG HAUL — Cargo Train Snake">
+<meta name="twitter:description" content="Snake, reskinned as a freight train. Couple containers, grow the train, never cross your own line.">
+<meta name="twitter:image" content="og-image.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  @font-face{
+    font-family:'Arcadia';
+    src:url('fonts/Arcadia-Regular.woff') format('woff'),
+        url('data:font/woff;base64,d09GRk9UVE8AABQIAA0AAAAAIswAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABDRkYgAAAFsAAADekAABk3fvl09ERTSUcAABQAAAAACAAAAAgAAAABR0RFRgAAE5wAAAAQAAAAEAAPAABHUE9TAAATrAAAAEYAAABasDK/MUdTVUIAABP0AAAACgAAAAoAAQAAT1MvMgAAAoAAAABKAAAAYGlKjdhjbWFwAAAENAAAAWYAAAIMIpDSuWhlYWQAAAE4AAAAMQAAADYezbbKaGhlYQAAAmAAAAAfAAAAJAs9B4hobXR4AAABbAAAAPMAAAKcticpOm1heHAAAAEwAAAABgAAAAYAqFAAbmFtZQAAAswAAAFlAAACqUHCEPNwb3N0AAAFnAAAABMAAAAg/7gAMgAAUAAAqAAAeAFjYGRgAOJmwSO6e+P5bb4yMDO/YACCO4Y7J8Npn//B7OxM74BcZgYmkCgAX1sMJQAAAHgBrdAlUABBFIDhPcGh4pZxGhm3hEPCesXJuPdwCTrSsEbBibi79Rn+Yx/ucjPfPNtZOVWrlDmsKqwsVfEsSo4AVWEUUk9hGvWqwk6jH48g6h3imMR0RCIEC5rZL+Zkz+wPzvF/ds4smjgnk34igqn3iBMSMxCNUDln8fU5iMUSGpmnEM+JXsKi3icmc2YteZlaNYrJYR2pfB2NAfOAGZ7NlOUQk5FE7xQnrOlEl9Qw1zS7nXUb+gyXmaY97teKIfIb3D7NuI/6iFeVnhuFOn5phHWufoku+pxHfLuH5UivV+IHrCSZ/zP+cR/x/rsDK4J2zAB4AWNgZGBgfvHfgoGBPZHBh8GDnR0oggqWAQBZrAPVAHgBY2BhWsQ4gYGVgYOpiymCgYHBG0IzxjEYMeoA+UApOGBkQAKh3uF+DAcYFFRPMSv8t2A4wfyC4QRMDeMX5hdASoGBCQAexQ0OAAB4AYWORbYTQRRAbzzBp3gzQtP2/f/RZ4g74zqdtljFZcYWWEJWwAqYsh92wKN5uJ16ct+5ZcA5PlACkNoA5bJwQ7nCBc4oVznLDeUaIXvKdc6SK7doslI+xTXeUKFUbVGSWzbKZeF3yhW2ea9c5QoflWt0SmeV61wpTZVbnCu9VT7F3dLmeBKZTm6exem8byaB6/vh0cv7rx8dqWir0dHR8VU8meZ26Hw5kNlZZIeLz5Mb+AdHA9OL7SyJV7ETujvu7s7Owe6v9/XjlfPaDLPZbDQ99Dwjc3tphu5gPbKTWWL7uXUjO/A4ZkKEoUMu9RkxKXP6whMCXHxZIUe85D6veST084n2L2d+ts4v9hWx1Kk4yxDnpxcyLDOiwixQJxlIPRA/wNAjLnYl0leSDiEuO5K77Mg6kP6///WLsw6vZR6SMZM1Ysohniyjvs2y8C4D1uItk+JdKz6X6hJhxXmfAFb8eLkAAAB4AU3MQ5zWeQAH4Gd0zeZvsuuYbdu2bdu2bW92XardPe1p83/ec/dPrrG+uD6IRwKKSRCHYhLjvqG3lpIUUV8jLQ020mLLXXLVX+544LHn3vga/zr+UygWyoQKoVKoFhqExqFtuJpcKflQpfhKSZUKVipSqUylCpVqV+pYaWSlcVX/TU1F0EBjrQwxyhKnXHHdHfdyzVfxb0PRUCqUCyHTbJRt7sw2C+czx2abSaS+SP8jgNTP6T+Xuin1TOra3++JtQFiFWIjYjVSfqb8k9KZaEu0OlpCNDuaHA2PmkTlef+fOL0xHQux0nr7HcRRedmP4047j7wcB1yWl9NgnHbG6Gqu7SYYq4eeuliolX5a6qa1NlZYarkOxuuju77WG+iYXqbrba32ZptvjgVmmOSIyUZYZ4pzplltok7OO+2oMy4464RhhhtkiKEGm2mWzvbbabe9DjrkgF322GeLRVZZmQbJvXjUAAB4AWNgZgCD/1sZjBiwAAAswgHqAHgBNJADrBx9FMV/d/HsoLZt24z64nLezuzsvx11UNu2za/42rgIGztVXMaNahuL4Fzfe84VEjFEpGaMn9J0pfWYYZiRpfmISIcvtXzpK1/6xb40TjRnevPf9c2Li5vHXiU/P6z+8qL2WPMmnetoIpKsbNK2x4ARE6bXzzGdaPWm3YdO/3f95p37zydEvuu4obEw0izTN7TQ8LO+ZQRB1tE8z3eXZF3lpJWjwqWG7YVLAyNUTmiYvmb9bdCjVOhrukr9jTQ/VJqlq3Q6iGxbC5XrRI7q22fIIM333cWRlzW+MjNhLj84m9Ddxfm+IdnYMtKh5S4zHNPIpQdm0w1umMnv0Z2U6y3NLmptqyBQjpn/UevCjxDaNmFsE2pLSUE1VEIzYSnEYB60huXgQwjlkIAaGAGlwiyYA8NhJFSBC1thNESCgsUwBkpgPiyBBUIcMiDQBoohgDRchYtwFM7CbDgDnqCBCUlkMzSADhXwH1yG09AS2QKtoAWyVTiBbIe5cBhGITuRHcgukX3IHqEIliEHkP3IwYQcj8kxWA/rYIWwCVbBFlgLG2C1sBE2w+UYQoL+rOYk9/gmLWSSWLJO/pfH8j7WLWbEdsRux/8QBM+AeUVhAECHZ9/33fvV2oc25hKb+/pnim3byRhNsW0bc7CEtd295zDOwbVy49wJD3wUX8WP8n8EX6FOmBBuRSr6iEliuzgofpWeSEFSlbQuq7KLnC4vyV8URXFS8pR15Z/6RHWojeqoeqWJmrPm0Dq1Ge2DjnqqXq136Wv6lUGMV0a8UWHMGifGnfHW9De7zA+WablbhdaCdWb9Jgp5QbxILEkgBaSHbJEL8t12sbfsj0DAFSIgEqIgGmIgFuIgHvqgH9ZgHTZgE7ZgG3ZgF/ZgH75SjvrSFNpG2+kyvaG39I6+pm9YGAtn6SyDZbIsls1yWC7LQw55FFBECWVUUEUNdTTQRAsJ2ghIkSHiPbyPD7AES7EMy//XYhXQkRxHVMqce43jWJPZ0D7nrKxZ0uq2V4cBwZ6tk5mPzMwYPJIVW+A96xzmxMzM1socNjPbuugpd6ZwUj2q1iW/plfS6ugZd95sz1RXVf+uqv7duyOBvy8VKUcp0pVDpKmNtDeUJA1hGxdJRx22W5HmYkgpSFIJ/28F9KacSVXJBKKgIjDmz1FHaLtHOlTw72hHs0AFhrViqIec4jZKJWx+Er6Df9ObnFL+voWoo3LIdHt0IekQMm27ow7TzZrfVPFAJl/C9SZwjbqHBtWib19x/qZtC6H1ps0nMJUSspJTs0Cc5hiDre18X7NgPWpF1mXjj3kDvGovOjc5suNor8WIlOIF6B5W/h2Yhyjd5EW7Jxmx45ucKwkc3USIo/JtOp6txBfTID3SwZAeD6FdQP1VMD8yuNhESftrFRwhJgB9pMnzkaRNRcI/ge6jXSppOR3jmYV0X0hZvo+z1MfHcB9no6V476NjqM/JlT+5EC3F/OZ65taknSv9doD6lE//RkcV/JxWoGyBTg+eHF6S5KwZ4NNxZel0Ps0OiEMFNFtyHWWpzmyl/OcAVMyykusHouNXhMHFUJ+kggdY0085a7cqwaiAJZrvA7dHQHI/BjLNlJW5Cz7Ul6FoqSWpq2xIfbaZAewC6aOU6KHtjPUIEzRpM9c+pGR+UoOdUoN0XIGm81QBM5UwWFyHnycdTykbzI/2i9pDSyOYxEIzTwVfhqNsIvgp5/AwPRH8DBEKvsRPUTYMFvJU/rxpTgQzEcyLgaNAe1GlgwK/2Tecz39HqWhpaB8aWSqgUNlv8CYoc8CaA8FeEHCWKmOJsmkCViDlTuW/41xJtUVpj5abuaHptHNH0ohKJ6Vsp5kbpRE+qP7O5WyNF801AyF/WxKBxHwbmmuU/2CpyopedEDSRlJddpCKZlCqi9olP+jVBbccLx7ezBwWsuabVfAkmmbWJPfNuO8mzbdIltBLmqBxEZpb1ucH5bFZEpl+mmbDyWx+OuqAP4z8mBg6BwbPyp8BB62CT3umhm4JZQzWdAPMcIt3anUtX49n3NIPu0LUXjJ7hK4SxFdBDbc5FSqACrhQO1NWY4FyBUpVDZlr7OZ0Mijn6pg5zOas7TUqECqrT0CYo9MoBRVtrkkE+3KRayHlHJ8pHFEc564CtTnqetK0YFFyG2dUsBrOVo0zoFkVBxBydE8eo8G/T6BBtHPEXc7RoBmUeaRQGimR85uOEndylJhTvJr7Q0eEq9dPhAz24VqTF6Kjv70HQsygb09HiK3vkRDhlDIMM9Iwf3PjxIg4OLUNkaPtjp3tTRqY31yXJG8vle+NXrSbI8kby0jyxo2TJOnzqZr6R7N2dA9pyT6YUIfB7TTFDNoK+DzSgi9VcA5G1VydCE6ATyS+lo5O+CeBQGsAQAj0UCFQzffFMI6JYbTHMI6hopMr/4sFl9huui94gHqlPHL2L7JqpnA9fGlhvqLyiVDAWDFCqNoRajvmZ1bGhKpjQl2J90HK0RQxPxV4ECN01MmUX4jNl5N2xHqirDZNmzpe/Rlr63MW6Eq8qvlHpM0nxPABGJjm0ZAUhaSkkG8H9XFxtJDb4tXKGSqSSChrRMJZ6S3a3UI4KNrmhL/czHO57PKibakY2u1dVMwOrLmLU9RFKSFzOoFeoIuhKK9IU/QPyWUDa1z3Ui3Xm1bSthm9YGe6mPtIUz+Gn2JnC+bltA9VCBkiYG9Mo65gwLTTPrKZ7RPDojkqGIBDNW3i8Oh0CLiPgeJd0mOcur0U6jxwqux7nLFdpA1U0d4nBQu5Fm79A8IM7Qovmm9WhrwIOckiR4tIRxXKf6hUnP1edCDpkFHJ/DBpTGcwZtn+jbDsEWUsmwf2fIll79wIy54b++ktY9nNqVn8NMNAmHqMsXPmWZl8LibcGwhk+hEQ7pIxwl0jg66BGm4TkLZbwz3u9064dY5wz5hIuBlHuKeDgxxrlR8vTffosVKH1IY126Z83tNx4BaeOTZpt4BuhclzBdqL7eB/lf+tcb51rs6WCZwCirJVdoHBLG0VpUyVWWAxS1Ol/Ooy8pvvmduTdn7M6ikuQupabeYrf6CU/DYvOouWhZzmZaxpGb9pfgyIBqBN3KaV/8Myn4950Y6UkfhlbB081SECdWZBfEAEq1Mv10scb1ob+DWybJqEuVeBuVcBcCuAtyqENB/yNdC7BlYuGqugmRTygI7sRP51a3u7wkV0EBEdVIiYlqP2FZRKcP8kukKelX/hhCN+l1hgiZsdSgf83yo8xnZdsPNfKlDNop+b3X/QQdMct8jG5vbJa4aSQnwnQi84Vnyp4Ci4PkbhDfKDaBpr9DCK4iik/0TIWfMiWLCwe3ABtQBDHuM3h5TnFs4rf2e6vJJOgBBfsfRykdpquo8mQ7nBGzJvh6AYXIonTyo9icK9tN06CtuJQq8o0E8LGI1WgInyNN17gVpCamFciobk2Q1Pq8fl4rPhOXFZ2n7sjwG7qTSkeDQ/fq7S7IB+83thkQbCpUY6JrGWWlF+L+xpGW2F1P3OiybTI6Hd4atSTDDayu5A2vxW2d/ZlSW4YqBpK1r2XMlgzCm0+BGk6AXSvMzuwFtJipApgbgHNTiM9E5YFo3bR8XmoHAcsU8HEGZCs5B9OhwPLVJ+r5ph1Hm8Taa4pdRuAqCb8KxSK0YSGNemgSMNJ2llz+JZIZ5aeNbHWSsvyg+jt+gbK+iIqqHok/ZMR5QXRSclg/MAEFtCN8NNK3WJm53oGAinkRZ3AvZEGSMv/J7webk7VTziCeWGtCvG2ZUy4NY9ASjj3kFBFzq1P3kmXVrYUNO0q8m7ljOSYz3x5DfrfMBaberMIByT5j9xUQV/R/hzst82cJH+RDJcSqS1FEtrlZ+bQK+nIF43Uyd8cA06HoEVHDCs+RG81wjVpgjWXDthOkLGVAOkj0QdsNJco8q6zfZJZ27yzq3yl9A91IRiu8OLtjbHhdxk76CmxIbEZqaTD5/oDT8cy9ecKHJaURAyie7yhrcBAtYjd0mcbYC1XL6+ZSWXS3eGkGIhYt9NvVidL7ql5tYsdVBv6fk9qdhqURlfsBsXUwaUUl9pal5C4NwJMMea6nHPiE9kmrOslZnM9Rvq82k2fZ5yPIVy59EMnkozvkNZzlDWFX/u1fg72K19yJiQs4lgdjss6xUkDI9Sk1Xt8htlm3bK0Qx545z0En6htLWbdDeCKaezCxqdXeeYXXVsV93o7KrFzufz4xkN0dMbnZHP55X0nvFMrTk85BnQE60cOe0saVTWhwh56ZOatFT+XojmUitlx/5iWL2+37PDL4wsDdf/x8OT5X88+DbNTcOZsh8FazIyp7HPfrS16UHt9nhmkPpC/iouTfgmfBO+Gd8Kan2kx9VsD2nTI6eoItWPnaKKZSGcECBcgKQJN+MSdw30OXR/LnZJPxFkjnTpDf5cyDkMkEvQV7ivJBeTu/9bAmAeQp4FQsL08K9Gn/33nKj3lnb50AHA/IVu0jHRkIoZujn+ToN0dqYjZLsAF7FwMhcnwVgJo/7Q/LM3jIVw3CyS/Qmn0+9xiuRZWP0gty1goGkmT0/Lv1NTPOqSUMwAlimudFnarOAaS9qL8bbxAzqri47rmbB3uL8SK1D/bvdoa5SB9mt0+8e+7SJrbadjEsGcRnme3SjbiLwJ8Z+A1SIbyYmNAC6yRUAqz+at0iYufeZ02ziWlPV+6KdlQaP0eqL2o48gavhse/G0/225WWHLLcw7n4q+Ef4f1BW/6AAAAAABAAAADAAAAAAAAAACAAB4AWNgZGBg4GKQY9BhYHRx8wlh4GBgYQCC///BMozZqUV5QDEGCA8oxwTkMYKxFEglkM/HIALk8YPl2cAkE5DmBwBoggXQAAAAAQAAAAAAAAAAAAAAAAABAAAAAA==') format('woff');
+    font-weight:400;font-style:normal;font-display:swap;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:#4e8f45;overflow:hidden;overscroll-behavior:none}
+  body{
+    font-family:'Arcadia';
+    color:#2e2a24;touch-action:none;
+    -webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;
+    -webkit-text-size-adjust:100%;
+  }
+  /* The countryside. A second canvas, pinned to the viewport and repainted only
+     on resize, so the whole screen is woodland and the game board sits in a
+     clearing in the middle of it rather than on a flat colour. */
+  #bg{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
+  #app{
+    position:relative;z-index:1;
+    height:100vh;height:100dvh;display:flex;flex-direction:column;align-items:center;
+    padding:10px 10px calc(10px + env(safe-area-inset-bottom,0px));gap:10px;
+  }
+  /* The board is the flexible row; the canvas is absolutely centred inside it so
+     resizing the canvas can never feed back into layout. JS sets its pixel size.
+     Everything is painted on canvas, so a late web font repaints but never reflows. */
+  #board{position:relative;flex:1 1 auto;width:100%;min-height:0}
+  #cv{position:absolute;inset:0;margin:auto;display:block;max-width:100%;max-height:100%;touch-action:none}
+
+  /* On-screen d-pad: touch devices only. */
+  #pad{
+    display:none;flex:0 0 auto;touch-action:none;
+    grid-template-columns:repeat(3,62px);grid-template-rows:repeat(2,62px);gap:10px;
+  }
+  @media (pointer:coarse){#pad{display:grid}}
+  .k{
+    -webkit-appearance:none;appearance:none;border:2px solid #486f3c;background:#eef8e4;
+    border-radius:16px;color:#2e2a24;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 3px 0 #3f6435,0 5px 10px rgba(20,40,16,0.3);cursor:pointer;
+    transition:transform .06s ease,box-shadow .06s ease,background .06s ease;
+  }
+  .k svg{width:26px;height:26px;fill:currentColor;pointer-events:none}
+  .k.on{background:#2a3d24;color:#eef8e4;box-shadow:0 0 0 #3f6435;transform:translateY(3px)}
+  .k.u{grid-column:2;grid-row:1}
+  .k.l{grid-column:1;grid-row:2}
+  .k.d{grid-column:2;grid-row:2}
+  .k.r{grid-column:3;grid-row:2}
+  .k.l svg{transform:rotate(-90deg)}
+  .k.d svg{transform:rotate(180deg)}
+  .k.r svg{transform:rotate(90deg)}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div id="app">
+  <div id="board">
+    <canvas id="cv" width="500" height="438" aria-label="Long Haul: a cargo train snake game"></canvas>
+  </div>
+  <div id="pad" aria-hidden="true">
+    <button type="button" class="k u" data-d="up"><svg viewBox="0 0 24 24"><path d="M12 6l8 12H4z"/></svg></button>
+    <button type="button" class="k l" data-d="left"><svg viewBox="0 0 24 24"><path d="M12 6l8 12H4z"/></svg></button>
+    <button type="button" class="k d" data-d="down"><svg viewBox="0 0 24 24"><path d="M12 6l8 12H4z"/></svg></button>
+    <button type="button" class="k r" data-d="right"><svg viewBox="0 0 24 24"><path d="M12 6l8 12H4z"/></svg></button>
+  </div>
+</div>
+<script>
+(function(){
+'use strict';
+/* =================================================================
+   LONG HAUL — Nokia-era Snake wearing a freight train costume.
+   CONFIG · STATE · TYPE · AUDIO · LOGIC · INPUT · PATH · ART · SCREENS · LOOP
+
+   The train runs on a continuous path, not a grid. Cells stay authoritative
+   for collision; everything drawn is sampled off a rounded polyline by
+   distance, so corners are arcs and each car flows through them in turn.
+   ================================================================= */
+
+/* ------------------------------ CONFIG --------------------------- */
+var COLS=20, ROWS=16, CELL=24, PAD=10, HUD=34;   // logical grid + chrome
+var BW=COLS*CELL, BH=ROWS*CELL;                  // 480 x 384 playfield
+var W=BW+PAD*2, H=BH+HUD+PAD*2;                  // 500 x 438 canvas
+var BX=PAD, BY=PAD+HUD;                          // playfield origin
+
+var INK='#2a3d24', LINE='#7aab6a', SOFT='#e8f5dc', DIM='#5a7a52';
+/* The yard's own grass, in the mown-clearing family the countryside paints
+   just outside the frame, so the two grounds read as one field. */
+var YARD_G=['#94ca6a','#8dc364','#86bc5e','#7fb457'];
+var YARD_RIM='#72a850', FENCE='#4d8b3c', FENCE_W='#cfe8ae';
+var WORN=['#a8ab68','#9ba05d','#b0b073'], GRIT=['#9a9388','#84806f'];
+var YARD_BLOOM=['#ffe066','#f0e79a','#ffc4d6'];  // quieter than the wood's
+var CARGO=['#e5644e','#f2a541','#4a9d7f','#4a7fb5','#b06ab3'], GOLD='#e8c14a';
+var EMPTY='#9a9082';                             // the two starter flatbeds
+var FRAME='#54463a', DECK='#9c7648', DARK='#17150f';
+/* The engine's own livery: red boiler, brass fittings, a green cab. Enough
+   colour that the head of the train never reads as more dark wagon. */
+var ENGINE='#d8483a', ENGINE_HI='#f4715c', ENGINE_DK='#9c2f28';
+var BRASS='#f0c04a', BRASS_DK='#b3872a';
+var CAB='#2f7150', CAB_HI='#419470', CAB_DK='#1e4c37';
+var CREAM='#f7e9c9', GLASS='#bfe6f2';
+var FONT='"Arcadia"';
+
+var BASE_TPS=6, MAX_TPS=14, SPEED_EVERY=5, SPEED_MUL=1.04;
+var GOLD_ODDS=0.1, GOLD_POINTS=3, GOLD_WAGONS=2;
+var FOODS=3;                                     // containers standing on the board
+var EASE_A=0.09;                                 // +/-9% speed wobble inside a tick
+var RIPPLE_DUR=90;                               // one car's squash; the wave itself lasts ~200ms
+var DIRN=['right','down','left','up'];
+
+var DIRV=[[1,0],[0,1],[-1,0],[0,-1]];            // right down left up
+var DIRI={right:0,down:1,left:2,up:3};
+var DIRS={
+  up:   {x: 0,y:-1,a:-Math.PI/2},
+  down: {x: 0,y: 1,a: Math.PI/2},
+  left: {x:-1,y: 0,a: Math.PI},
+  right:{x: 1,y: 0,a: 0}
+};
+var KEYMAP={arrowup:'up',arrowdown:'down',arrowleft:'left',arrowright:'right',
+            w:'up',s:'down',a:'left',d:'right'};
+var IGNORE=/^(Shift|Control|Alt|Meta|Tab|CapsLock|NumLock|ScrollLock|Insert|Dead|Unidentified|ContextMenu|Process|F\d+)$/;
+
+/* Tap targets, in logical canvas units. Hit tests add 8px of slop. */
+var UI={
+  sound:{x:W-PAD-63,y:PAD+3,w:27,h:27},          // 9 art pixels square, like the icons
+  pause:{x:W-PAD-27,y:PAD+3,w:27,h:27},
+  wrap: {x:W/2-90, y:236, w:180,h:32},
+  menu: {x:W/2-52, y:332, w:104,h:26}
+};
+
+/* ------------------------------ STATE ---------------------------- */
+var cv=document.getElementById('cv'), ctx=cv.getContext('2d');
+var bg=document.getElementById('bg'), bgx=bg.getContext('2d');
+var boardEl=document.getElementById('board'), padEl=document.getElementById('pad');
+var sx=1, sy=1, raf=0, lastT=0, ro=null, bgKey='';
+
+var state='title';                               // title | play | pause | over | win
+var cells=[], hist=[], wagons=[], dir='right', queue=[], grow=0;
+var foods=[], pops=[], score=0, hauled=0, best=0, newRec=false;
+var tickMs=1000/BASE_TPS, acc=0;
+var wrapMode=false, muted=false;
+var squash=0, shake=0, overAt=0, impact=null, pip=null, bump=0;
+var rippleAt=0, predShift=false;
+var fixX=0, fixY=0, fixA=0;                      // smooths the head's turn-prediction pop
+var odoPx=0, lastHead=null;
+var puffs=[], smokeT=0, lastStack=null;
+var yardImg=null, propCells={};                  // the baked yard, and its clutter
+var poses=[];                                    // reused per-frame scratch
+
+/* localStorage throws on some file:// origins and in locked-down browsers, so
+   every access is guarded and falls back to memory for the session. */
+var mem={};
+var store={
+  get:function(k,d){ try{ var v=localStorage.getItem(k); return v===null?d:v; }catch(e){ return (k in mem)?mem[k]:d; } },
+  set:function(k,v){ try{ localStorage.setItem(k,v); }catch(e){ mem[k]=v; } }
+};
+
+/* ------------------------------ HELPERS -------------------------- */
+function px(x){ return BX+(x+0.5)*CELL; }
+function py(y){ return BY+(y+0.5)*CELL; }
+function pad3(n){ n=String(n); while(n.length<3) n='0'+n; return n; }
+function clamp(v,a,b){ return v<a?a:v>b?b:v; }
+function angDiff(a,b){ var d=a-b; while(d>Math.PI)d-=6.2832; while(d<-Math.PI)d+=6.2832; return d; }
+
+function rr(x,y,w,h,r){                          // rounded-rect path
+  r=Math.min(r,w/2,h/2);
+  ctx.beginPath(); ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);     ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+function box(x,y,w,h,r,fill){ ctx.fillStyle=fill; rr(x,y,w,h,r); ctx.fill(); }
+function dot(x,y,r){ ctx.beginPath(); ctx.arc(x,y,r,0,6.2832); ctx.fill(); }
+function star(x,y,r){                            // 4-point sparkle
+  ctx.beginPath(); ctx.moveTo(x,y-r);
+  ctx.quadraticCurveTo(x,y,x+r,y); ctx.quadraticCurveTo(x,y,x,y+r);
+  ctx.quadraticCurveTo(x,y,x-r,y); ctx.quadraticCurveTo(x,y,x,y-r); ctx.fill();
+}
+function shade(hex,amt){                         // amt<0 darkens, >0 lightens
+  var n=parseInt(hex.slice(1),16), r=n>>16&255, g=n>>8&255, b=n&255;
+  var t=amt<0?0:255, k=Math.abs(amt);
+  return 'rgb('+Math.round(r+(t-r)*k)+','+Math.round(g+(t-g)*k)+','+Math.round(b+(t-b)*k)+')';
+}
+
+/* ------------------------------ TYPE ----------------------------- */
+/* Arcadia by Alex Wan (CC BY 4.0) — alexwan.itch.io/arcadia. One face, pixels
+   all the way down. Letters are placed one at a time because the tracking this
+   wants is wider than the metrics give, and canvas letterSpacing is not
+   portable enough to rely on. */
+var fontReady=false;
+function initFont(){
+  if(!document.fonts||!document.fonts.load) return;
+  try{
+    document.fonts.load('16px '+FONT).then(function(f){
+      fontReady=!!(f&&f.length);
+    },function(){});
+  }catch(e){}
+}
+function tx(s,x,y,size,color,align,ls,weight){
+  s=String(s);
+  ctx.font=(weight||400)+' '+size+'px '+FONT;
+  ctx.textBaseline='middle'; ctx.textAlign='left'; ctx.fillStyle=color;
+  if(ls===undefined) ls=Math.max(1,size*0.14);
+  var i,w=-ls;
+  for(i=0;i<s.length;i++) w+=ctx.measureText(s[i]).width+ls;
+  var cx = align==='center' ? x-w/2 : align==='right' ? x-w : x;
+  for(i=0;i<s.length;i++){ ctx.fillText(s[i],cx,y); cx+=ctx.measureText(s[i]).width+ls; }
+  return w;
+}
+function pt(s,x,y,size,color,align,ls){ return tx(s,x,y,size,color,align,ls); }
+
+/* ------------------------------ AUDIO ---------------------------- */
+var ac=null, master=null;
+function audio(){
+  if(ac) return ac;
+  try{
+    var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return null;
+    ac=new AC(); master=ac.createGain(); master.gain.value=0.85; master.connect(ac.destination);
+  }catch(e){ ac=null; }
+  return ac;
+}
+function tone(f0,f1,at,dur,type,vol){
+  var o=ac.createOscillator(), g=ac.createGain();
+  o.type=type; o.frequency.setValueAtTime(f0,at);
+  if(f1!==f0) o.frequency.exponentialRampToValueAtTime(Math.max(1,f1),at+dur);
+  g.gain.setValueAtTime(0.0001,at);
+  g.gain.exponentialRampToValueAtTime(vol,at+0.012);
+  g.gain.exponentialRampToValueAtTime(0.0001,at+dur);
+  o.connect(g); g.connect(master); o.start(at); o.stop(at+dur+0.03);
+}
+function sfx(name){
+  var a=audio(); if(!a||muted) return;
+  if(a.state==='suspended') a.resume();
+  var t=a.currentTime;
+  if(name==='pick')       { tone(430,880,t,0.13,'square',0.12); }
+  else if(name==='gold')  { tone(560,1120,t,0.09,'square',0.12); tone(840,1680,t+0.08,0.16,'triangle',0.10); }
+  else if(name==='crash') { tone(440,392,t,0.14,'square',0.14); tone(311,277,t+0.14,0.14,'square',0.14); tone(196,110,t+0.28,0.36,'sawtooth',0.13); }
+  else if(name==='start') { tone(392,392,t,0.07,'square',0.09); tone(587,587,t+0.08,0.13,'square',0.09); }
+  else if(name==='win')   { tone(523,523,t,0.10,'square',0.10); tone(659,659,t+0.10,0.10,'square',0.10);
+                            tone(784,784,t+0.20,0.10,'square',0.10); tone(1047,1047,t+0.30,0.30,'triangle',0.10); }
+  else if(name==='ui')    { tone(720,900,t,0.05,'square',0.07); }
+}
+
+/* ------------------------------ LOGIC ---------------------------- */
+function startRun(){
+  cells=[]; hist=[];
+  var hx=(COLS>>1)-1, hy=ROWS>>1, i;
+  for(i=0;i<3;i++) cells.push({x:hx-i,y:hy});     // loco + two empty flatbeds
+  for(i=0;i<5;i++) hist.push({x:hx-i,y:hy});      // two spare nodes behind the tail
+  wagons=[{c:EMPTY,t:0},{c:EMPTY,t:0}];          // two empty flats behind the loco
+  dir='right'; queue=[]; grow=0; score=0; hauled=0; newRec=false;
+  foods.length=0; pops.length=0;
+  tickMs=1000/BASE_TPS; acc=0; squash=0; shake=0; impact=null; pip=null; rippleAt=0;
+  fixX=fixY=fixA=0; predShift=false; odoPx=0; lastHead=null;
+  puffs.length=0; lastStack=null; smokeT=80;
+  state='play'; spawnFood(); sfx('start');
+}
+/* Tops the board back up to FOODS. Nothing spawns under the train, on the
+   clutter in the corners, or on another container. */
+function spawnFood(){
+  var occ={}, free=[], i, j, k, gold, ci;
+  for(i=0;i<cells.length;i++) occ[cells[i].y*COLS+cells[i].x]=1;
+  for(i=0;i<foods.length;i++) occ[foods[i].y*COLS+foods[i].x]=1;
+  for(i=0;i<COLS*ROWS;i++) if(!occ[i]&&!propCells[i]) free.push(i);
+  while(foods.length<FOODS && free.length){
+    j=(Math.random()*free.length)|0; k=free[j]; free.splice(j,1);
+    gold=Math.random()<GOLD_ODDS; ci=(Math.random()*CARGO.length)|0;
+    foods.push({x:k%COLS, y:(k/COLS)|0, gold:gold, color:gold?GOLD:CARGO[ci],
+                type:gold?0:(Math.random()*4)|0});   // box | open | tank | reefer
+  }
+  if(!foods.length) finish('win');               // nowhere left to put one
+}
+function speedFor(n){
+  return 1000/Math.min(MAX_TPS, BASE_TPS*Math.pow(SPEED_MUL, Math.floor(n/SPEED_EVERY)));
+}
+function finish(how){
+  state=how; overAt=performance.now();
+  if(score>best){ best=score; newRec=true; store.set('lh.best',String(best)); }
+  sfx(how==='win'?'win':'crash');
+}
+function derail(dv){ impact=dv; shake=1; finish('over'); }
+
+function tick(){
+  if(queue.length) dir=queue.shift();            // one buffered turn per tick
+  var dv=DIRS[dir], nx=cells[0].x+dv.x, ny=cells[0].y+dv.y, i;
+  if(wrapMode){ nx=(nx+COLS)%COLS; ny=(ny+ROWS)%ROWS; }
+  else if(nx<0||ny<0||nx>=COLS||ny>=ROWS){ derail(dv); return; }
+  // The tail cell frees up this tick unless a wagon is still being coupled.
+  var limit=cells.length-(grow>0?0:1);
+  for(i=0;i<limit;i++) if(cells[i].x===nx&&cells[i].y===ny){ derail(dv); return; }
+  cells.unshift({x:nx,y:ny});
+  hist.unshift({x:nx,y:ny});
+  if(grow>0) grow--; else cells.pop();
+  if(hist.length>cells.length+3) hist.length=cells.length+3;
+  for(i=0;i<foods.length;i++) if(nx===foods[i].x && ny===foods[i].y){
+    var f=foods[i], n=f.gold?GOLD_WAGONS:1;
+    foods.splice(i,1);
+    hauled++; score+=f.gold?GOLD_POINTS:1; grow+=n;
+    while(n--) wagons.push({c:f.gold?GOLD:f.color, t:f.type});
+    squash=1; rippleAt=performance.now(); tickMs=speedFor(hauled);
+    pops.push({x:f.x, y:f.y, color:f.color, gold:f.gold, type:f.type,
+               at:performance.now(), span:tickMs});
+    sfx(f.gold?'gold':'pick');
+    spawnFood();
+    break;
+  }
+}
+
+/* ------------------------------ INPUT ---------------------------- */
+function turn(d){
+  if(state!=='play') return;
+  var last=queue.length?queue[queue.length-1]:dir;
+  if(d===last) return;
+  if(DIRS[d].x===-DIRS[last].x && DIRS[d].y===-DIRS[last].y) return;  // no 180s
+  if(queue.length>=2) return;                                        // buffer of two
+  if(!queue.length) predShift=true;              // the head's corner just changed shape
+  queue.push(d); pip={d:d,t:1};                                      // instant ack
+}
+function togglePause(){
+  if(state==='play') state='pause';
+  else if(state==='pause'){ state='play'; lastT=performance.now(); }
+  else return;
+  bump=1; sfx('ui');
+}
+function toggleWrap(){ wrapMode=!wrapMode; store.set('lh.wrap',wrapMode?'1':'0'); bump=1; sfx('ui'); }
+function toggleMute(){ muted=!muted; store.set('lh.mute',muted?'1':'0'); bump=1; sfx('ui'); }
+function anyKey(){
+  var a=audio(); if(a&&a.state==='suspended') a.resume();
+  if(state==='title') startRun();
+  else if(state==='pause'){ state='play'; lastT=performance.now(); }
+  else if((state==='over'||state==='win') && performance.now()-overAt>700) startRun();
+}
+
+addEventListener('keydown',function(e){
+  var k=e.key; if(!k) return;
+  if(k===' '||k==='Spacebar'||k.indexOf('Arrow')===0) e.preventDefault();  // no page scroll
+  if(e.metaKey||e.ctrlKey||e.altKey) return;
+  var lk=k.toLowerCase();
+  if(lk==='m'){ toggleMute(); return; }
+  if(state==='title' && lk==='t'){ toggleWrap(); return; }
+  if((state==='play'||state==='pause') && (lk===' '||lk==='spacebar'||lk==='escape')){ togglePause(); return; }
+  var d=KEYMAP[lk];
+  if(d && state==='play'){ turn(d); return; }
+  if(lk==='escape' && (state==='over'||state==='win')){ state='title'; return; }
+  if(e.repeat) return;
+  if(!IGNORE.test(k)) anyKey();
+});
+
+function ptFrom(clientX,clientY){
+  var r=cv.getBoundingClientRect();
+  return {x:(clientX-r.left)*W/r.width, y:(clientY-r.top)*H/r.height};
+}
+function inRect(p,r){ return p.x>=r.x-8&&p.x<=r.x+r.w+8&&p.y>=r.y-8&&p.y<=r.y+r.h+8; }
+function tapUI(p){
+  if(inRect(p,UI.sound)){ toggleMute(); return true; }
+  if((state==='play'||state==='pause') && inRect(p,UI.pause)){ togglePause(); return true; }
+  if(state==='title' && inRect(p,UI.wrap)){ toggleWrap(); return true; }
+  if((state==='over'||state==='win') && performance.now()-overAt>700 && inRect(p,UI.menu)){
+    state='title'; sfx('ui'); return true;
+  }
+  return false;
+}
+cv.addEventListener('click',function(e){ var p=ptFrom(e.clientX,e.clientY); if(!tapUI(p)) anyKey(); });
+
+var tStart=null, tFired=false;
+function swipe(dx,dy){ turn(Math.abs(dx)>Math.abs(dy) ? (dx>0?'right':'left') : (dy>0?'down':'up')); }
+cv.addEventListener('touchstart',function(e){
+  var t=e.changedTouches[0]; tStart={x:t.clientX,y:t.clientY}; tFired=false; e.preventDefault();
+},{passive:false});
+cv.addEventListener('touchmove',function(e){
+  e.preventDefault();
+  if(!tStart||state!=='play') return;
+  var t=e.changedTouches[0], dx=t.clientX-tStart.x, dy=t.clientY-tStart.y;
+  if(Math.abs(dx)<22 && Math.abs(dy)<22) return;
+  swipe(dx,dy); tStart={x:t.clientX,y:t.clientY}; tFired=true;   // a drag can flick twice
+},{passive:false});
+cv.addEventListener('touchend',function(e){
+  e.preventDefault();
+  if(!tStart) return;
+  var t=e.changedTouches[0], dx=t.clientX-tStart.x, dy=t.clientY-tStart.y;
+  if(!tFired){
+    if(Math.abs(dx)<16 && Math.abs(dy)<16){ if(!tapUI(ptFrom(t.clientX,t.clientY))) anyKey(); }
+    else if(state==='play') swipe(dx,dy);
+  }
+  tStart=null;
+},{passive:false});
+cv.addEventListener('touchcancel',function(){ tStart=null; });
+
+padEl.addEventListener('pointerdown',function(e){
+  var b=e.target.closest('.k'); if(!b) return;
+  e.preventDefault(); b.classList.add('on');
+  if(state==='play') turn(b.getAttribute('data-d')); else anyKey();
+});
+function padUp(){
+  var on=padEl.querySelectorAll('.k.on');
+  for(var i=0;i<on.length;i++) on[i].classList.remove('on');
+}
+addEventListener('pointerup',padUp); addEventListener('pointercancel',padUp);
+
+addEventListener('blur',function(){ if(state==='play') state='pause'; });
+document.addEventListener('visibilitychange',function(){ if(document.hidden&&state==='play') state='pause'; });
+
+/* ------------------------------ PATH ----------------------------- */
+/* Each cell contributes one piece of centreline: a straight run, or — where the
+   train turns — a quarter circle of radius half a cell, tangent to both edges.
+   GEO[in*4+out] holds that piece, measured from the cell centre in cell units. */
+var GEO=[];
+function buildGeo(){
+  for(var i=0;i<4;i++) for(var j=0;j<4;j++){
+    var di=DIRV[i], dj=DIRV[j], g={turn:false,hi:0.5,ho:0.5};
+    if(i!==j && (i+2)%4!==j){
+      var ox=(dj[0]-di[0])*0.5, oy=(dj[1]-di[1])*0.5;          // arc centre
+      var a0=Math.atan2(-di[1]*0.5-oy, -di[0]*0.5-ox);         // at the entry edge
+      var a1=Math.atan2( dj[1]*0.5-oy,  dj[0]*0.5-ox);         // at the exit edge
+      var sw=a1-a0; while(sw>Math.PI)sw-=6.2832; while(sw<-Math.PI)sw+=6.2832;
+      g={turn:true,ox:ox,oy:oy,a0:a0,sw:sw,s:sw<0?-1:1,hi:Math.PI/8,ho:Math.PI/8};
+    }
+    GEO[i*4+j]=g;
+  }
+}
+/* Point and heading at arc distance d from the piece's entry edge. */
+function nodeAt(g,i,d,out){
+  if(!g.turn){
+    var v=DIRV[i];
+    out.x=v[0]*(d-0.5); out.y=v[1]*(d-0.5); out.a=Math.atan2(v[1],v[0]);
+    return out;
+  }
+  var an=g.a0+g.sw*(d/(g.hi+g.ho));
+  out.x=g.ox+Math.cos(an)*0.5; out.y=g.oy+Math.sin(an)*0.5;
+  out.a=Math.atan2(g.s*Math.cos(an), -g.s*Math.sin(an));
+  return out;
+}
+function delta(a,b){                             // wrap-aware step between cells
+  var dx=b.x-a.x, dy=b.y-a.y;
+  if(wrapMode){
+    if(dx>1)dx-=COLS; else if(dx<-1)dx+=COLS;
+    if(dy>1)dy-=ROWS; else if(dy<-1)dy+=ROWS;
+  }
+  return dx>0?0:dx<0?2:dy>0?1:3;                 // direction index
+}
+function outDirOf(i,over){
+  if(i>0) return delta(hist[i],hist[i-1]);
+  // The head's corner needs the turn it has not taken yet; the buffered input is
+  // that turn, and a mid-tick change is absorbed by the fix* smoothing below.
+  return over!==undefined?over:DIRI[queue.length?queue[0]:dir];
+}
+/* Car i, tick progress t in [0,1]: it travels from the midpoint of the cell
+   behind it to the midpoint of its own cell, so at every tick boundary it sits
+   exactly where the car ahead of it sat. Following comes out correct for free. */
+var tmpA={x:0,y:0,a:0}, tmpB={x:0,y:0,a:0};
+function carPose(i,t,over){
+  var B=hist[i], A=hist[i+1]||B, C=hist[i+2]||A;
+  var iAB=(A===B)?DIRI[dir]:delta(A,B);
+  var iCA=(C===A)?iAB:delta(C,A);
+  var gA=GEO[iCA*4+iAB], gB=GEO[iAB*4+outDirOf(i,over)];
+  var L1=gA.ho, d=t*(L1+gB.hi), p;
+  if(d<=L1){
+    p=nodeAt(gA,iCA,gA.hi+d,tmpA);
+    p.x-=DIRV[iAB][0]; p.y-=DIRV[iAB][1];        // shift from A's frame into B's
+  } else {
+    p=nodeAt(gB,iAB,d-L1,tmpA);
+  }
+  return {x:px(B.x)+p.x*CELL, y:py(B.y)+p.y*CELL, a:p.a};
+}
+function ease(t){ return t-EASE_A*Math.sin(6.2832*t)/6.2832; }
+function trainPoses(t){
+  poses.length=0;
+  for(var i=0;i<cells.length;i++) poses.push(carPose(i,t));
+  poses[0].x+=fixX; poses[0].y+=fixY; poses[0].a+=fixA;
+  return poses;
+}
+function offs(x,y){                              // mirror copies for the wrap seam
+  var o=[[0,0]];
+  if(wrapMode){
+    var ox=x<CELL?BW:(x>BW-CELL?-BW:0), oy=y<CELL?BH:(y>BH-CELL?-BH:0);
+    if(ox) o.push([ox,0]);
+    if(oy) o.push([0,oy]);
+    if(ox&&oy) o.push([ox,oy]);
+  }
+  return o;
+}
+function rippleOf(i,now){
+  if(!rippleAt) return 0;
+  var step=200/Math.max(1,cells.length);         // head-to-tail in ~200ms
+  var e=now-rippleAt-i*step;
+  if(e<0) return 0;
+  if(e>RIPPLE_DUR){ if(i>=cells.length-1) rippleAt=0; return 0; }
+  return Math.sin(Math.PI*e/RIPPLE_DUR);
+}
+
+/* ------------------------------ ART ------------------------------ */
+/* ------------------------- THE COUNTRYSIDE ----------------------- */
+/* Painted onto #bg, which covers the whole viewport and sits behind the game.
+   It is real pixel art: everything is drawn on a small offscreen canvas — one
+   art pixel is one pixel there — and then blown up with smoothing off, so the
+   grid is honest rather than a filter over smooth shapes. Regenerated only on
+   resize, from a fixed seed, so a given screen always grows the same wood and
+   the same villages. */
+var PAL={
+  a:'#1f5a2a', b:'#2f7a35', c:'#45a043', d:'#6cc258',   // broadleaf, dark to lit
+  e:'#1a4b2c', f:'#24633a', g:'#35814d',                // conifer
+  t:'#6b4a2b', u:'#47301c',                             // trunk
+  h:'#f2e4c4', i:'#d5c19b',                             // plaster
+  j:'#c0533f', k:'#91392e',                             // tile
+  l:'#e6b46a', m:'#b8853f',                             // thatch
+  n:'#ffe9a0', o:'#5a3d24',                             // lit window, timber
+  p:'#a8a89e', q:'#78786e',                             // stone
+  s:'#fdfdf5', v:'#ffe066', w:'#ff9ec0',                // white, buttercup, clover
+  x:'#b98d5a', y:'#2e2418', z:'#6a5c50'                 // paling, dark, chimney
+};
+var SPR={
+tree:['...ccc...',
+      '..cddcc..',
+      '.cddcccb.',
+      'cddccccba',
+      'cdccccbba',
+      'ccccbbbaa',
+      '.cccbbaa.',
+      '..cbbaa..',
+      '....t....',
+      '...tu....',
+      '..uttu...'],
+tree2:['..ccc..',
+       '.cddcc.',
+       'cddccca',
+       'cdccbba',
+       'ccccbaa',
+       '.ccbaa.',
+       '...t...',
+       '...t...',
+       '..utu..'],
+pine:['...g...',
+      '...f...',
+      '..ggf..',
+      '.gggff.',
+      '..ggf..',
+      '.gggff.',
+      'ggggfff',
+      '..ggf..',
+      '.gggff.',
+      'ggggfef',
+      '...u...',
+      '..uuu..'],
+tree3:['.....ccc.....',                          // the big ones, up close
+       '...ccdddcc...',
+       '..cdddddccb..',
+       '.cdddddcccbb.',
+       'cddddcccccbba',
+       'cdddccccccbba',
+       'cddcccccccbaa',
+       'ccccccccbbbaa',
+       '.cccccbbbbaa.',
+       '..cccbbbbaa..',
+       '...ccbbbaa...',
+       '....cbbba....',
+       '.....tu......',
+       '.....tu......',
+       '....uttu.....',
+       '...uuttuu....'],
+pine2:['.....g.....',
+       '.....f.....',
+       '....ggf....',
+       '...gggff...',
+       '....ggf....',
+       '...gggff...',
+       '..ggggfff..',
+       '...gggff...',
+       '..ggggfff..',
+       '.gggggffff.',
+       '..ggggfff..',
+       '.gggggffff.',
+       'ggggggfffff',
+       '..gggfeff..',
+       '.....u.....',
+       '.....u.....',
+       '...uuuuu...'],
+bush:['..ccc..',
+      '.cddcb.',
+      'cdcccba',
+      '.ccbba.'],
+cottage:['........z..',
+         '.....j..z..',
+         '....jjjzz..',
+         '...jjjjj...',
+         '..jjjjjjj..',
+         '.jjjjjjjjj.',
+         'kkkkkkkkkkk',
+         '.hhhhhhhhh.',
+         '.hnhhohhnh.',
+         '.hhhhohhhh.',
+         '.iiiiiiiii.'],
+cot:['...lll...',
+     '..lllll..',
+     '.lllllll.',
+     'mmmmmmmmm',
+     '.hhhhhhh.',
+     '.hnhohnh.',
+     '.hhhohhh.',
+     '.hhhohhh.',
+     '.iiiiiii.'],
+barn:['...mmmmm...',
+      '..mmmmmmm..',
+      '.mmmmmmmmm.',
+      'mmmmmmmmmmm',
+      '.jjjjjjjjj.',
+      '.jjooojjnj.',
+      '.jjooojjjj.',
+      '.jjooojjjj.',
+      '.jjjjjjjjj.',
+      '.iiiiiiiii.'],
+church:['.....s.....',
+        '....jjj....',
+        '....jjj....',
+        '....jjj....',
+        '...jjjjj...',
+        '...hnnnh...',
+        '...hnnnh...',
+        '..jjjjjjj..',
+        '.jjjjjjjjj.',
+        'kkkkkkkkkkk',
+        '.hhhhhhhhh.',
+        '.hnhhhhhnh.',
+        '.hhhhohhhh.',
+        '.hhhhohhhh.',
+        '.iiiiiiiii.'],
+fence:['x..x..x..',
+       'xxxxxxxxx',
+       'x..x..x..'],
+hay:['.lll.',
+     'llmll',
+     'lllll',
+     'mmmmm'],
+sheep:['.sss.',
+       'ssssy',
+       'sssss',
+       '.y.y.'],
+rock:['.pp..',
+      'ppppq',
+      'pqqqq'],
+stack:['ooooooooo',                              // a pile of spare sleepers
+       'uuuuuuuuu',
+       'ooooooooo',
+       'uuuuuuuuu',
+       '.yyyyyyy.'],
+drum:['.qqq.',                                   // an oil drum, lid up
+      'qpppq',
+      'qpqpq',
+      'qpppq',
+      '.qyq.']
+};
+/* Two repaints of the foliage letters, so the same eight tree sprites give a
+   wood with old dark timber and a few turning early. */
+function repal(over){
+  var p={},k;
+  for(k in PAL) p[k]=PAL[k];
+  for(k in over) p[k]=over[k];
+  return p;
+}
+var PAL_DK=repal({a:'#154a22',b:'#20602a',c:'#2f7a36',d:'#4a9c46',
+                  e:'#123a22',f:'#1a4f2e',g:'#26663c'});
+var PAL_AUT=repal({a:'#8a4a18',b:'#b8681f',c:'#d99433',d:'#f2be55'});
+var BAYER=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];   // 4x4 ordered dither
+var BLOOM=['#fdfdf5','#ffe066','#ff9ec0','#c9a8ff'];  // wildflowers, both grounds
+
+function rng(seed){                              // mulberry32
+  return function(){
+    seed=seed+0x6D2B79F5|0;
+    var t=Math.imul(seed^seed>>>15,1|seed);
+    t=t+Math.imul(t^t>>>7,61|t)^t;
+    return ((t^t>>>14)>>>0)/4294967296;
+  };
+}
+/* One sprite, anchored by the middle of its feet. Runs of a colour go down as
+   a single rect, which keeps a whole village to a few hundred fills. */
+function blit(c,sp,cx,by,pal){
+  pal=pal||PAL;
+  var x=cx-(sp[0].length>>1), y=by-sp.length, r,q,n,ch,row;
+  for(r=0;r<sp.length;r++){
+    row=sp[r]; q=0;
+    while(q<row.length){
+      ch=row.charAt(q);
+      if(!pal[ch]){ q++; continue; }
+      n=1; while(q+n<row.length && row.charAt(q+n)===ch) n++;
+      c.fillStyle=pal[ch]; c.fillRect(x+q,y+r,n,1);
+      q+=n;
+    }
+  }
+}
+/* The yard's footprint on screen, in viewport pixels, so the wood can leave a
+   clearing for it and drop a shadow underneath. */
+function yardRect(){
+  var r=cv.getBoundingClientRect();
+  if(r.width<4) return null;
+  var kx=r.width/W, ky=r.height/H;
+  return {x:r.left+(BX-5)*kx, y:r.top+(BY-5)*ky, w:(BW+10)*kx, h:(BH+10)*ky,
+          hx:r.left+(BX-5)*kx, hy:r.top+(PAD-3)*ky, hw:(BW+10)*kx, hh:(HUD+2)*ky};
+}
+function paintScene(){
+  var w=Math.max(1,window.innerWidth||document.documentElement.clientWidth);
+  var h=Math.max(1,window.innerHeight||document.documentElement.clientHeight);
+  var dpr=Math.min(window.devicePixelRatio||1,2), yard=yardRect();
+  var key=w+'x'+h+'@'+dpr+(yard?'|'+Math.round(yard.x)+','+Math.round(yard.y)+','+Math.round(yard.w):'');
+  if(key===bgKey) return;
+  bgKey=key;
+
+  var P=clamp(Math.round(Math.min(w,h)/140),3,7);   // viewport px per art pixel
+  var aw=Math.ceil(w/P), ah=Math.ceil(h/P);
+  var off=document.createElement('canvas');
+  off.width=aw; off.height=ah;
+  var c=off.getContext('2d');
+  var R=rng(0x10A6BA), i,x,y,k,f,u2,d,th;
+
+  /* --- ground: banded greens, the seams dithered rather than blended. The
+     steps between bands are deliberately small: the dither should read as
+     grass texture, never as a checkerboard --- */
+  var STOP=[[0,'#3a7a3a'],[0.18,'#468840'],[0.46,'#529a47'],[0.76,'#4a8d41'],[1,'#417f3b']];
+  for(y=0;y<ah;y++){
+    f=y/ah; k=0;
+    while(k<STOP.length-2 && f>=STOP[k+1][0]) k++;
+    c.fillStyle=STOP[k][1]; c.fillRect(0,y,aw,1);
+    u2=(f-STOP[k][0])/(STOP[k+1][0]-STOP[k][0]);
+    if(u2>0.74){
+      d=(u2-0.74)/0.26; c.fillStyle=STOP[k+1][1];
+      for(x=0;x<aw;x++){
+        th=(BAYER[(y%4)*4+(x%4)]+0.5)/16;
+        if(d>th) c.fillRect(x,y,1,1);
+      }
+    }
+  }
+  for(i=0;i<(aw*ah/34)|0;i++){                   // grass flecks
+    x=(R()*aw)|0; y=(R()*ah)|0;
+    c.fillStyle=R()<0.5?'rgba(40,92,40,0.40)':'rgba(140,198,104,0.38)';
+    c.fillRect(x,y,1,1);
+    if(R()<0.4) c.fillRect(x+1,y-1,1,1);
+  }
+  for(i=0;i<(aw*ah/210)|0;i++){                  // wildflowers
+    x=(R()*aw)|0; y=(R()*ah)|0;
+    c.fillStyle=BLOOM[(R()*4)|0]; c.fillRect(x,y,1,1);
+    if(R()<0.5) c.fillRect(x+2,y+1,1,1);
+  }
+
+  /* --- what stands on it. Sorted by feet, so nearer things overlap --- */
+  var items=[], yx=0, yy=0, yw=0, yh=0;
+  if(yard){
+    yx=Math.round(yard.x/P); yy=Math.round(yard.y/P);
+    yw=Math.round(yard.w/P); yh=Math.round(yard.h/P);
+  }
+  function clear(px2,py2,pad){                   // is this spot free of the yard?
+    if(!yard) return true;
+    pad=pad||3;
+    return px2<yx-pad||px2>yx+yw+pad||py2<yy-pad||py2>yy+yh+pad;
+  }
+  function put(sp,px2,py2,pal){ if(clear(px2,py2)) items.push({s:sp,x:px2,y:py2,p:pal}); }
+  function leaf(){ f=R(); return f<0.12?PAL_AUT:(f<0.46?PAL_DK:PAL); }
+
+  for(i=0;i<Math.ceil(aw/7)+2;i++)               // the far treeline
+    put(R()<0.45?SPR.pine:SPR.tree2, (i*7+(R()*5|0))|0, (4+R()*7)|0, PAL_DK);
+
+  /* villages: a church or barn, a couple of cottages, palings, hay, sheep */
+  var spots=[[0.09,0.30],[0.09,0.78],[0.91,0.24],[0.91,0.70],[0.30,0.95],[0.70,0.06]];
+  for(i=0;i<spots.length;i++){
+    var vx=(spots[i][0]*aw)|0, vy=(spots[i][1]*ah)|0;
+    if(!clear(vx,vy,14)) continue;
+    var big=(i%3===0)?SPR.church:(i%3===1?SPR.barn:SPR.cottage);
+    put(big,vx,vy);
+    put(R()<0.5?SPR.cot:SPR.cottage, vx-11-(R()*3|0), vy+3+(R()*3|0));
+    put(SPR.cot, vx+11+(R()*3|0), vy-2-(R()*3|0));
+    put(SPR.fence, vx-3, vy+7);
+    put(SPR.fence, vx+7, vy+7);
+    put(SPR.hay, vx+15, vy+7);
+    put(SPR.sheep, vx-13+(R()*6|0), vy+9);
+    if(R()<0.6) put(SPR.sheep, vx-6+(R()*8|0), vy+12);
+    put(SPR.tree, vx-17, vy+1, leaf());
+    put(SPR.tree2, vx+18, vy+4, leaf());
+  }
+
+  var n=Math.max(16,Math.round(aw*ah/560));      // the wood itself
+  for(i=0;i<n;i++){
+    x=(R()*aw)|0; y=((0.05+R()*0.97)*ah)|0;
+    f=R();
+    put(f<0.34?SPR.pine:(f<0.72?SPR.tree:SPR.tree2), x, y, leaf());
+  }
+  for(i=0;i<10;i++){                             // and the big ones up close
+    f=R();
+    x=(f<0.5?R()*0.16:1-R()*0.16)*aw|0;
+    y=((0.42+R()*0.66)*ah)|0;
+    put(R()<0.4?SPR.pine2:SPR.tree3, x, y, leaf());
+  }
+  for(i=0;i<6;i++) put(R()<0.4?SPR.pine2:SPR.tree3,(R()*aw)|0,(ah+2)|0,leaf());
+  for(i=0;i<(n*1.3)|0;i++){                      // scrub
+    x=(R()*aw)|0; y=((0.05+R()*0.98)*ah)|0;
+    put(R()<0.8?SPR.bush:SPR.rock, x, y, R()<0.4?PAL_DK:PAL);
+  }
+  items.sort(function(A,B){ return A.y-B.y; });
+
+  /* --- the clearing the yard sits in, cut before the wood is drawn over it --- */
+  if(yard){
+    c.fillStyle='#79bd57';                       // mown grass, hard edged
+    c.fillRect(yx-4,yy-4,yw+8,yh+8);
+    c.fillStyle='#67ab4a';                       // one dithered row of stubble
+    for(x=yx-6;x<yx+yw+6;x++) for(y=yy-6;y<yy+yh+6;y++){
+      if(x>yx-5&&x<yx+yw+4&&y>yy-5&&y<yy+yh+4) continue;
+      if((BAYER[((y%4)+4)%4*4+((x%4)+4)%4]+0.5)/16<0.5) c.fillRect(x,y,1,1);
+    }
+    c.fillStyle='rgba(22,48,16,0.42)';           // and its shadow, offset down
+    c.fillRect(yx-2,yy+3,yw+5,yh+3);
+    c.fillRect(yx+yw,yy,4,yh+3);
+    c.fillStyle='rgba(22,48,16,0.34)';           // the score bar casts one too
+    c.fillRect(Math.round(yard.hx/P)-1,Math.round((yard.hy+yard.hh)/P),
+               Math.round(yard.hw/P)+4,3);
+  }
+  for(i=0;i<items.length;i++) blit(c,items[i].s,items[i].x,items[i].y,items[i].p);
+
+  /* --- a dithered vignette, hugging the very edge, no soft gradients --- */
+  var vig=Math.max(4,Math.round(Math.min(aw,ah)*0.14));
+  c.fillStyle='rgba(14,36,12,0.4)';
+  for(y=0;y<ah;y++) for(x=0;x<aw;x++){
+    d=1-Math.min(1,Math.min(Math.min(x,aw-1-x),Math.min(y,ah-1-y))/vig);
+    if(d<=0.1) continue;
+    if(d*d*d>(BAYER[(y%4)*4+(x%4)]+0.5)/16) c.fillRect(x,y,1,1);
+  }
+
+  bg.width=Math.round(w*dpr); bg.height=Math.round(h*dpr);
+  bgx.setTransform(1,0,0,1,0,0);
+  bgx.imageSmoothingEnabled=false;               // nearest neighbour: honest pixels
+  bgx.clearRect(0,0,bg.width,bg.height);
+  bgx.drawImage(off,0,0,aw,ah,0,0,aw*P*dpr,ah*P*dpr);
+}
+
+/* ---------------------------- THE YARD --------------------------- */
+/* The ground inside the fence, baked once at the same honest-pixel scale as
+   the wood outside it — one art pixel is YARD_P logical px, blitted with
+   smoothing off — and out of the same vocabulary: a few mown greens laid in
+   soft patches with 4x4 dither at the seams, flecks, wildflowers, worn earth
+   where the yard gets used, and pixel clutter in the corners. Nothing here
+   moves, so it costs one drawImage a frame. */
+var YARD_P=3;
+function buildYard(){
+  var aw=Math.ceil((BW+10)/YARD_P), ah=Math.ceil((BH+10)/YARD_P);
+  var off=document.createElement('canvas');
+  off.width=aw; off.height=ah;
+  var c=off.getContext('2d'), R=rng(0x4A11DE), i,j,x,y,d,th,b,x0,x1,y0,y1;
+
+  /* --- mown grass. Soft blobs of neighbouring tones, dithered into each
+     other: the steps are small on purpose, so it reads as grass rather than
+     as a map of countries --- */
+  c.fillStyle=YARD_G[1]; c.fillRect(0,0,aw,ah);
+  for(i=0;i<34;i++){
+    b={x:R()*aw, y:R()*ah, r:5+R()*11, t:(R()*YARD_G.length)|0};
+    c.fillStyle=YARD_G[b.t];
+    x0=Math.max(0,(b.x-b.r)|0); x1=Math.min(aw,(b.x+b.r+1)|0);
+    y0=Math.max(0,(b.y-b.r)|0); y1=Math.min(ah,(b.y+b.r+1)|0);
+    for(y=y0;y<y1;y++) for(x=x0;x<x1;x++){
+      d=1-Math.sqrt((x-b.x)*(x-b.x)+(y-b.y)*(y-b.y))/b.r;
+      if(d<=0) continue;
+      th=(BAYER[(y%4)*4+(x%4)]+0.5)/16;
+      if(d*6>th) c.fillRect(x,y,1,1);            // solid, with a dithered rim
+    }
+  }
+  for(i=0;i<(aw*ah/30)|0;i++){                   // grass flecks
+    x=(R()*aw)|0; y=(R()*ah)|0;
+    c.fillStyle=R()<0.5?'rgba(52,106,42,0.34)':'rgba(200,236,154,0.36)';
+    c.fillRect(x,y,1,1);
+    if(R()<0.4) c.fillRect(x+1,y-1,1,1);
+  }
+  for(i=0;i<(aw*ah/620)|0;i++){                  // wildflowers, sparse: the board
+    x=(R()*aw)|0; y=(R()*ah)|0;                  // has a train to read against
+    c.fillStyle=YARD_BLOOM[(R()*3)|0]; c.fillRect(x,y,1,1);
+    if(R()<0.3) c.fillRect(x+2,y+1,1,1);
+  }
+
+  /* --- worn earth. Kept to the edges: the middle of the board has to stay
+     quiet enough to read a train against --- */
+  for(i=0;i<6;i++){
+    var side=(R()*4)|0, ex, ey, lobe;
+    if(side<2){ ex=4+R()*(aw-8); ey=side?ah-3-R()*ah*0.09:3+R()*ah*0.09; }
+    else      { ey=4+R()*(ah-8); ex=side===2?3+R()*aw*0.07:aw-3-R()*aw*0.07; }
+    c.fillStyle=WORN[(R()*WORN.length)|0];
+    for(lobe=0;lobe<3;lobe++){                   // three lobes, so nothing is round
+      var lx=ex+(R()*2-1)*5, ly=ey+(R()*2-1)*4, er=3+R()*5;
+      x0=Math.max(0,(lx-er)|0); x1=Math.min(aw,(lx+er+1)|0);
+      y0=Math.max(0,(ly-er)|0); y1=Math.min(ah,(ly+er+1)|0);
+      for(y=y0;y<y1;y++) for(x=x0;x<x1;x++){
+        d=1-Math.sqrt((x-lx)*(x-lx)+(y-ly)*(y-ly))/er;
+        if(d<=0) continue;
+        th=(BAYER[(y%4)*4+(x%4)]+0.5)/16;
+        if(d*2.4>th) c.fillRect(x,y,1,1);
+      }
+    }
+    for(j=0;j<7;j++){                            // a little grit trodden into it
+      c.fillStyle=GRIT[(R()*2)|0];
+      c.fillRect((ex+(R()*2-1)*7)|0,(ey+(R()*2-1)*6)|0,1,1);
+    }
+  }
+
+  /* --- clutter, in the four corner cells only, and those cells are struck
+     off the spawn list so cargo never lands inside a bush --- */
+  function at(cx,cy,dx,dy){                      // cell -> art pixel
+    return {x:Math.round((px(cx)+dx-(BX-5))/YARD_P), y:Math.round((py(cy)+dy-(BY-5))/YARD_P)};
+  }
+  var corners=[[0,0],[COLS-1,0],[0,ROWS-1],[COLS-1,ROWS-1]];
+  var kit=[[SPR.bush,SPR.rock],[SPR.hay,SPR.fence],[SPR.stack,SPR.bush],[SPR.drum,SPR.rock]];
+  for(i=0;i<4;i++){
+    var cx=corners[i][0], cy=corners[i][1];
+    propCells[cy*COLS+cx]=1;
+    var a=at(cx,cy,cx?-9:9,cy?-3:7), s=kit[i], sd=cx?-5:5;
+    c.fillStyle='rgba(30,58,22,0.20)';           // one shadow under the pair
+    c.fillRect(a.x-3,a.y-1,7,1);
+    blit(c,s[0],a.x,a.y,i===2?PAL:(R()<0.5?PAL_DK:PAL));
+    blit(c,s[1],a.x+sd,a.y+1,PAL_DK);
+  }
+
+  /* --- the rim: mown grass going rough at the fence, the same dithered
+     stubble the clearing outside is edged with --- */
+  c.fillStyle=YARD_RIM;
+  for(y=0;y<ah;y++) for(x=0;x<aw;x++){
+    d=Math.min(Math.min(x,aw-1-x),Math.min(y,ah-1-y));
+    if(d>3) continue;
+    d=1-d/4;
+    if(d*d>(BAYER[(y%4)*4+(x%4)]+0.5)/16) c.fillRect(x,y,1,1);
+  }
+  yardImg=off;
+}
+
+/* ------------------------- THE PERMANENT WAY --------------------- */
+/* One closed loop of track round the border ring, for the title screen only:
+   the idle train laps that ring, and a train wants rail under it before anyone
+   is told what the game is. It is baked exactly the way the yard is — a
+   distance field to the ring's centreline, evaluated once per art pixel — so
+   the ballast, the sleepers and the rails are made of the same pixels as the
+   grass they are laid on, and the corners come out as honest pixel arcs.
+
+   Widths are in logical px from the centreline, picked so that each lands on
+   its own whole row of art pixels: seven rows of gravel bed with two more
+   frayed out by dither, sleepers across the same seven, and a rail on the
+   second row in from each end of them — so a sleeper shows outside each rail
+   and three show between, which is the difference between track and a zip
+   fastener. */
+var BED_HW=10.5, BED_FRINGE=13.5, TIE_HW=10.5, RAIL_D=6, TIE_TH=3, TIE_PITCH=9;
+var GRAVEL=['#8b8275','#7d7568','#968d7e','#6d6558','#a09786'];
+var TIE_C=['#4b3a29','#55432f','#42321f'];       // creosote, three shades of it
+var RAIL_C='#d6d0bc';                            // steel, catching the same light
+var trackImg=null;
+
+function buildTrack(){
+  var aw=Math.ceil((BW+10)/YARD_P), ah=Math.ceil((BH+10)/YARD_P);
+  var off=document.createElement('canvas');
+  off.width=aw; off.height=ah;
+  var c=off.getContext('2d'), R=rng(0xBA11A5), i, j, x, y, g, th, e, ph;
+  /* The ring: cell centres from (0,0) to (COLS-1,ROWS-1), cornered with the
+     same half-cell arcs the train itself takes, so the rail is under it. */
+  var X0=px(0), X1=px(COLS-1), Y0=py(0), Y1=py(ROWS-1), CR=CELL/2;
+  var LX=X1-X0-CR*2, LY=Y1-Y0-CR*2, AQ=Math.PI*CR/2;
+  var S1=LX, S2=LX+AQ, S3=LX+AQ+LY, S4=LX+AQ*2+LY;
+  var S5=LX*2+AQ*2+LY, S6=LX*2+AQ*3+LY, S7=LX*2+AQ*3+LY*2;
+  var TOT=LX*2+LY*2+AQ*4;
+  var PITCH=TOT/Math.round(TOT/TIE_PITCH);       // trimmed so the loop closes
+  var d=0, s=0, dx, dy, r;
+
+  for(j=0;j<ah;j++) for(i=0;i<aw;i++){
+    x=GX+i*ART+ART/2; y=GY+j*ART+ART/2;
+    if(x<X0+CR && y<Y0+CR){                      // the four corner arcs
+      dx=x-(X0+CR); dy=y-(Y0+CR); r=Math.sqrt(dx*dx+dy*dy);
+      d=Math.abs(r-CR); s=S7+(Math.atan2(dy,dx)+Math.PI)*CR;
+    } else if(x>X1-CR && y<Y0+CR){
+      dx=x-(X1-CR); dy=y-(Y0+CR); r=Math.sqrt(dx*dx+dy*dy);
+      d=Math.abs(r-CR); s=S1+(Math.atan2(dy,dx)+Math.PI/2)*CR;
+    } else if(x>X1-CR && y>Y1-CR){
+      dx=x-(X1-CR); dy=y-(Y1-CR); r=Math.sqrt(dx*dx+dy*dy);
+      d=Math.abs(r-CR); s=S3+Math.atan2(dy,dx)*CR;
+    } else if(x<X0+CR && y>Y1-CR){
+      dx=x-(X0+CR); dy=y-(Y1-CR); r=Math.sqrt(dx*dx+dy*dy);
+      d=Math.abs(r-CR); s=S5+(Math.atan2(dy,dx)-Math.PI/2)*CR;
+    } else if(x>=X0+CR && x<=X1-CR){             // top and bottom
+      if(y-Y0 < Y1-y){ d=Math.abs(y-Y0); s=x-(X0+CR); }
+      else           { d=Math.abs(y-Y1); s=S4+((X1-CR)-x); }
+    } else {                                     // right and left
+      if(x-X0 > X1-x){ d=Math.abs(x-X1); s=S2+(y-(Y0+CR)); }
+      else           { d=Math.abs(x-X0); s=S6+((Y1-CR)-y); }
+    }
+    if(d>BED_FRINGE) continue;
+    if(d>BED_HW){                                // the shoulder frays out
+      e=(BED_FRINGE-d)/(BED_FRINGE-BED_HW);
+      th=(BAYER[(j%4)*4+(i%4)]+0.5)/16;
+      if(e<th){ R(); continue; }
+      g=R(); c.fillStyle=g<0.5?GRAVEL[2]:GRAVEL[4];
+    } else {
+      g=R();
+      c.fillStyle = g<0.44?GRAVEL[0] : g<0.72?GRAVEL[1] : g<0.90?GRAVEL[2]
+                  : g<0.97?GRAVEL[3] : GRAVEL[4];
+    }
+    c.fillRect(i,j,1,1);
+    if(d<=TIE_HW){                               // sleepers, pitched by arc length
+      ph=s-Math.floor(s/PITCH)*PITCH;
+      if(ph<TIE_TH){ c.fillStyle=TIE_C[(R()*3)|0]; c.fillRect(i,j,1,1); }
+    }
+    if(Math.abs(d-RAIL_D)<=1){                   // and the two rails over them
+      c.fillStyle=RAIL_C; c.fillRect(i,j,1,1);
+    }
+  }
+  trackImg=off;
+}
+
+/* --------------------------- ROLLING STOCK ----------------------- */
+/* The train is pixel art on the same grid as the ground: sprites written as
+   arrays of strings, one character per art pixel, rendered once per palette
+   and per heading into a small canvas and then blitted. Cars never rotate by
+   anything but an eighth turn and never land off the grid, so the locomotive
+   is made of the same pixels as the trees. A car is exactly one cell long —
+   eight art pixels — so the cars of a train abut, and the dark pixel down each
+   end reads as the coupling between them. */
+var ART=YARD_P;                                  // 3 logical px to the art pixel
+var GX=BX-5, GY=BY-5;                            // the ground's pixel origin
+function snapX(v){ return GX+Math.round((v-GX)/ART)*ART; }
+function snapY(v){ return GY+Math.round((v-GY)/ART)*ART; }
+
+var CARS={
+/* Rear to the left, chimney and lamp to the right. The cab stands a pixel
+   proud of the boiler on both flanks, which is most of what says locomotive
+   from above; the brass pixel on the running board is a side rod and shifts
+   between the two frames, which is the whole of the animation. */
+loco:['.zzz....',
+      'zNNNzyRz',
+      'zNWNRCRY',
+      'zNWNRCRY',
+      'zNNNzyRz',
+      '.zzz....'],
+loco2:['.zzz....',
+       'zNNNzRyz',
+       'zNWNRCRY',
+       'zNWNRCRY',
+       'zNNNzRyz',
+       '.zzz....'],
+/* A container from above is twice as long as it is wide, so the box proper is
+   the middle four rows and the solebars of the wagon show above and below it.
+   The z rows are simply left out of the palette for a container standing in
+   the yard, which is the same sprite without a wagon under it. */
+box:['zzzzzzzz',
+     'kLRLRLDk',
+     'EBRBRBDE',
+     'EBRBRBDE',
+     'kSRSRSDk',
+     'zzzzzzzz'],
+open:['zzzzzzzz',
+      'kEEEEEEk',
+      'EommmmoE',
+      'EommmmoE',
+      'kEEEEEEk',
+      'zzzzzzzz'],
+tank:['zzzzzzzz',
+      'kEEEEEEk',
+      'ELLhLLLE',
+      'ETTTTTTE',
+      'kEEEEEEk',
+      'zzzzzzzz'],
+reef:['zzzzzzzz',
+      'kLLLLLDk',
+      'EVBBBBDE',
+      'EVBBBBDE',
+      'kSSSSSDk',
+      'zzzzzzzz'],
+flat:['zzzzzzzz',
+      'zddddddz',
+      'zppppppz',
+      'zddddddz',
+      'zppppppz',
+      'zzzzzzzz'],
+pip:['W...',
+     '.W..',
+     '..W.',
+     '.W..',
+     'W...'],
+/* The two header buttons, on the same grid as everything else: nine art pixels
+   square, with the outer ring left clear for the plate's border. */
+sndOn:['.........',
+       '.........',
+       '...#..#..',
+       '.###...#.',
+       '.###...#.',
+       '.###...#.',
+       '...#..#..',
+       '.........',
+       '.........'],
+sndOff:['.........',
+        '.........',
+        '...#.....',
+        '.###.#.#.',
+        '.###..#..',
+        '.###.#.#.',
+        '...#.....',
+        '.........',
+        '.........'],
+pauseI:['.........',
+        '.........',
+        '..##.##..',
+        '..##.##..',
+        '..##.##..',
+        '..##.##..',
+        '..##.##..',
+        '.........',
+        '.........'],
+playI:['.........',
+       '.........',
+       '...#.....',
+       '...##....',
+       '...###...',
+       '...##....',
+       '...#.....',
+       '.........',
+       '.........']
+};
+var KINDS=['box','open','tank','reef'];
+var SOLE='#3f382e';                              // solebars, running boards, chassis
+var LOCO_PAL={
+  N:'#3a3a3e', W:GLASS, z:SOLE,                  // charcoal cab, lit window
+  R:ENGINE, C:'#1a1713',                         // boiler, and the chimney down it
+  y:BRASS, Y:'#fff0b0'                           // side rod, lamp
+};
+var FLAT_PAL={ z:SOLE, d:DECK, p:'#7d5c37' };
+var PIP_PAL={ W:INK };
+var ICON_PAL={ '#':INK };
+/* One cargo colour, spread over the letters the container sprites use. With
+   no z the wagon under the box is simply not painted. */
+function cargoPal(c,gold,chassis){
+  return {
+    z: chassis?SOLE:null,
+    k: gold?BRASS_DK:shade(c,-0.55), E: shade(c,-0.34),
+    L: shade(c,0.30), B: c, S: shade(c,-0.15), R: shade(c,-0.26),
+    D: shade(c,-0.44), o: shade(c,-0.5), m: shade(c,0.16),
+    T: c, h: shade(c,-0.62), V: shade(c,0.34)
+  };
+}
+var WHITE_PAL={}, WHITE_KEYS='NWzRCyYkELBSDomThVdpW'.split('');
+for(var wk=0;wk<WHITE_KEYS.length;wk++) WHITE_PAL[WHITE_KEYS[wk]]='#ffffff';
+
+/* Rendered sprites, cached by name, palette and heading. There are eight
+   headings, not four: a car rounding a corner spends a beat on the diagonal
+   instead of snapping through ninety degrees in one frame, which is most of
+   what made the turns look like a hinge. The rotation is done on the art grid
+   FIRST and the result blown up by whole pixels afterwards, so a diagonal car
+   is still made of the same square pixels as the ground under it. */
+var sprites={};
+function sprite(name,pal,key,dir){
+  var id=name+'|'+key+'|'+dir, s=sprites[id];
+  if(s) return s;
+  var sp=CARS[name], w=sp[0].length, h=sp.length, aw, ah;
+  var a=document.createElement('canvas');
+  a.width=w; a.height=h;
+  blit(a.getContext('2d'),sp,w>>1,h,pal);
+  if(dir&1){ aw=ah=Math.ceil(Math.sqrt(w*w+h*h)); }   // a diagonal needs a square
+  else { var vert=(dir>>1)&1; aw=vert?h:w; ah=vert?w:h; }
+  var b=document.createElement('canvas');
+  b.width=aw; b.height=ah;
+  var bg=b.getContext('2d');
+  bg.imageSmoothingEnabled=false;
+  bg.translate(aw/2,ah/2); bg.rotate(dir*0.7854); bg.drawImage(a,-w/2,-h/2);
+  if(dir&1){                                          // a rotated edge is the one
+    var im=bg.getImageData(0,0,aw,ah), q=im.data, k; // thing canvas still smooths,
+    for(k=3;k<q.length;k+=4) q[k]=q[k]<128?0:255;    // so the alpha is snapped back
+    bg.putImageData(im,0,0);
+  }
+  s=document.createElement('canvas');
+  s.width=aw*ART; s.height=ah*ART;
+  var g=s.getContext('2d');
+  g.imageSmoothingEnabled=false;
+  g.drawImage(b,0,0,aw*ART,ah*ART);                   // whole pixels, no resample
+  sprites[id]=s;
+  return s;
+}
+function locoSprite(white,dir,frame){
+  var n=frame?'loco2':'loco';
+  return white ? sprite(n,WHITE_PAL,'w',dir) : sprite(n,LOCO_PAL,'e',dir);
+}
+function shadowSprite(name,chassis,dir){
+  var key=chassis?'sc':'sy', pal={}, k;
+  if(sprites[name+'|'+key+'|'+dir]) return sprites[name+'|'+key+'|'+dir];
+  for(k in WHITE_PAL) pal[k]=CAR_SHADOW;
+  if(!chassis) pal.z=null;
+  return sprite(name,pal,key,dir);
+}
+/* Cargo standing in the yard and cargo riding on a wagon come out of here
+   alike, which is why the box you drove over is the box you are hauling. */
+function cargoSprite(colour,kind,white,dir,chassis){
+  if(colour===EMPTY) return white ? sprite('flat',WHITE_PAL,'w',dir)
+                                  : sprite('flat',FLAT_PAL,'f',dir);
+  var name=KINDS[kind&3];
+  return white ? sprite(name,WHITE_PAL,'w',dir)
+               : sprite(name,cargoPal(colour,colour===GOLD,chassis),
+                        colour+(chassis?'c':'y'),dir);
+}
+/* Cars are laid down in two passes — every shadow, then every car — so that
+   no car's shadow falls across the one coupled in front of it. */
+var CAR_SHADOW='rgba(32,54,20,0.22)', cars=[];
+function putCar(img,shd,x,y){
+  cars.push(img, shd, snapX(x-img.width/2), snapY(y-img.height/2));
+}
+function flushCars(){
+  var i;
+  for(i=0;i<cars.length;i+=4) ctx.drawImage(cars[i+1],cars[i+2]+ART,cars[i+3]+ART);
+  for(i=0;i<cars.length;i+=4) ctx.drawImage(cars[i],cars[i+2],cars[i+3]);
+  cars.length=0;
+}
+function heading(a){ return Math.round(a/0.7854)&7; }   // eight, so corners have a middle
+
+/* A container standing in the yard: no wagon under it, so the shadow is the
+   box alone, and it breathes a pixel to say it can be picked up. */
+function drawContainer(x,y,f,now,still){
+  var img=cargoSprite(f.color,f.type,false,0,false);
+  var hop=still?0:(Math.sin(now/340)>0?-ART:0);
+  var X=snapX(x-img.width/2), Y=snapY(y-img.height/2)+hop;
+  ctx.drawImage(shadowSprite(KINDS[f.type&3],false,0),X+ART,Y+ART);
+  ctx.drawImage(img,X,Y);
+  if(f.gold){                                    // a sparkle, four pixels, blinking
+    ctx.fillStyle='rgba(255,253,240,'+(0.55+0.45*Math.sin(now/150)).toFixed(2)+')';
+    var qx=X+img.width, qy=Y-ART*2;
+    ctx.fillRect(qx,qy-ART,ART,ART*3); ctx.fillRect(qx-ART,qy,ART*3,ART);
+  }
+}
+/* Cargo is held in place until the locomotive has all but reached it — it is
+   eaten a tick before it arrives — and then lifts, fades and throws grit. */
+function drawPops(now){
+  for(var i=pops.length-1;i>=0;i--){
+    var p=pops[i], e=now-p.at, hold=p.span*0.84, X=px(p.x), Y=py(p.y), k, j, a, d;
+    if(e<hold){ drawContainer(X,Y,p,now); continue; }
+    k=(e-hold)/190;
+    if(k>=1){ pops.splice(i,1); continue; }
+    ctx.globalAlpha=1-k;
+    drawContainer(X,Y-Math.round(k*2)*ART,p,now,true);
+    ctx.globalAlpha=1;
+    ctx.fillStyle='rgba(46,42,36,'+(0.45*(1-k)).toFixed(2)+')';
+    for(j=0;j<6;j++){
+      a=j*1.047+0.4; d=7+k*14;
+      ctx.fillRect(snapX(X+Math.cos(a)*d),snapY(Y+Math.sin(a)*d),ART,ART);
+    }
+  }
+}
+/* A wisp, not a smokescreen: a couple of puffs most ticks, three when she is
+   really shifting, and they thin out fast so the yard stays readable. */
+function emitSmoke(fast){
+  if(!lastStack||puffs.length>26) return;
+  var a=lastStack.a, bx=-Math.cos(a), by=-Math.sin(a), nx=-Math.sin(a), ny=Math.cos(a);
+  var n=fast>1.6?3:2, drift=16+fast*18;
+  for(var i=0;i<n;i++){
+    var side=(Math.random()*2-1)*0.7;
+    puffs.push({
+      x:lastStack.x+bx*i*2.2+(Math.random()-0.5)*1.8,
+      y:lastStack.y+by*i*2.2+(Math.random()-0.5)*1.8,
+      vx:bx*drift+nx*side*11+(Math.random()-0.5)*4,
+      vy:by*drift+ny*side*11-22+(Math.random()-0.5)*4,  // -22: slow screen-up rise
+      life:1, ttl:0.62+i*0.12
+    });
+  }
+}
+function drawSmoke(dt){
+  for(var i=puffs.length-1;i>=0;i--){
+    var p=puffs[i];
+    if(state==='play'||state==='title'){
+      p.life-=dt/1000/p.ttl;
+      p.x+=p.vx*dt/1000; p.y+=p.vy*dt/1000; p.vx*=0.965; p.vy*=0.965;
+    }
+    if(p.life<=0){ puffs.splice(i,1); continue; }
+    var s=(2+(((1-p.life)*2.6)|0))*ART;          // two to four pixels across
+    ctx.fillStyle='rgba(222,218,206,'+(0.58*Math.min(1,p.life*1.9)).toFixed(3)+')';
+    ctx.fillRect(snapX(p.x-s/2),snapY(p.y-s/2),s,s);
+  }
+}
+function flashing(now){
+  if(state!=='over') return false;
+  var e=now-overAt; return (e<95)||(e>=195&&e<290);
+}
+function drawTrain(now){
+  var n=poses.length, white=flashing(now), i,j,o,p,rip,d,img,shd,ox,oy,back,rec;
+  var lx=impact?Math.round(impact.x*shake*2)*ART:0;
+  var ly=impact?Math.round(impact.y*shake*2)*ART:0;
+  var frame=((odoPx/(CELL*0.5))|0)&1;            // the rods, two frames to a cell
+  for(i=n-1;i>=0;i--){                           // tail first: the head sits on top
+    p=poses[i];
+    d=heading(p.a);
+    rip=rippleOf(i,now);
+    ox=oy=0;
+    if(rip>0){                                   // the coupling wave, in whole pixels
+      back=Math.round(rip*1.4)*ART;
+      ox=-Math.cos(p.a)*back; oy=-Math.sin(p.a)*back;
+    }
+    if(i===0){
+      rec=Math.round(squash*1.6)*ART;            // and the locomotive's recoil
+      ox+=lx-Math.cos(p.a)*rec; oy+=ly-Math.sin(p.a)*rec;
+      img=locoSprite(white,d,frame);
+      shd=shadowSprite(frame?'loco2':'loco',true,d);
+      lastStack={x:p.x+ox+Math.cos(p.a)*4.5, y:p.y+oy+Math.sin(p.a)*4.5, a:p.a};
+    } else {
+      var w=wagons[i-1], wc=w?w.c:EMPTY;
+      img=cargoSprite(wc,w?w.t:0,white,d,true);
+      shd=shadowSprite(wc===EMPTY?'flat':KINDS[(w?w.t:0)&3],true,d);
+    }
+    o=offs(p.x-BX,p.y-BY);
+    for(j=0;j<o.length;j++) putCar(img,shd,p.x+ox+o[j][0],p.y+oy+o[j][1]);
+  }
+  flushCars();
+  if(pip && pip.t>0 && state==='play'){          // turn acknowledged this frame
+    var dd=DIRS[pip.d], im=sprite('pip',PIP_PAL,'i',heading(dd.a));
+    ctx.globalAlpha=pip.t*0.85;
+    ctx.drawImage(im,snapX(poses[0].x+dd.x*21-im.width/2),
+                     snapY(poses[0].y+dd.y*21-im.height/2));
+    ctx.globalAlpha=1;
+  }
+}
+
+/* ------------------------------ SCREENS -------------------------- */
+function drawBoard(){
+  ctx.fillStyle='rgba(30,58,22,0.22)'; rr(BX-5,BY-2,BW+10,BH+10,12); ctx.fill();
+  ctx.save();
+  rr(BX-5,BY-5,BW+10,BH+10,12); ctx.clip();      // the baked yard, corners and all
+  if(yardImg) ctx.drawImage(yardImg,BX-5,BY-5,yardImg.width*YARD_P,yardImg.height*YARD_P);
+  else{ ctx.fillStyle=YARD_G[1]; ctx.fillRect(BX-5,BY-5,BW+10,BH+10); }
+  if(state==='title'&&trackImg)                  // the loop the idle train laps
+    ctx.drawImage(trackImg,BX-5,BY-5,trackImg.width*YARD_P,trackImg.height*YARD_P);
+  ctx.restore();
+  ctx.lineWidth=2; ctx.strokeStyle=wrapMode?FENCE_W:FENCE;
+  if(wrapMode) ctx.setLineDash([7,7]);           // dashed = tunnels, solid = fatal
+  rr(BX-5,BY-5,BW+10,BH+10,12); ctx.stroke();
+  ctx.setLineDash([]);
+}
+/* Both header buttons are pixel art like the rest of the game: a plate whose
+   four corner pixels are simply left out — which is what a rounded corner is
+   on this grid — and a nine-pixel glyph blitted through the same routine the
+   rolling stock uses. No arcs, no antialiasing, nothing to give it away. */
+function icon(r,kind){
+  var a=ART;
+  ctx.fillStyle=LINE;                            // the border, corners cut
+  ctx.fillRect(r.x+a,r.y,r.w-a*2,r.h);
+  ctx.fillRect(r.x,r.y+a,r.w,r.h-a*2);
+  ctx.fillStyle=SOFT;                            // and the face, inset one pixel
+  ctx.fillRect(r.x+a*2,r.y+a,r.w-a*4,r.h-a*2);
+  ctx.fillRect(r.x+a,r.y+a*2,r.w-a*2,r.h-a*4);
+  var n = kind==='sound' ? (muted?'sndOff':'sndOn')
+                         : (state==='pause'?'playI':'pauseI');
+  ctx.drawImage(sprite(n,ICON_PAL,'i',0),r.x,r.y);
+}
+function drawHud(){
+  var y=PAD+HUD/2;
+  ctx.fillStyle='#eaf6dc'; rr(BX-5,PAD-3,BW+10,HUD+2,10); ctx.fill();
+  ctx.strokeStyle='rgba(122,171,106,0.7)'; ctx.lineWidth=1.5;
+  rr(BX-5,PAD-3,BW+10,HUD+2,10); ctx.stroke();
+  if(state==='title') pt('LONG HAUL',BX,y,10,DIM,'left',2);
+  else{
+    tx('SCORE',BX,y-1,10,DIM,'left',2);
+    pt(pad3(score),BX+50,y,15,INK,'left',2);
+    var bw=pt(pad3(best),UI.sound.x-16,y,12,DIM,'right',2);
+    tx('BEST',UI.sound.x-26-bw,y-1,10,DIM,'right',2);
+  }
+  icon(UI.sound,'sound');
+  if(state==='play'||state==='pause') icon(UI.pause,'pause');
+}
+function panel(x,y,w,h){
+  ctx.fillStyle='rgba(232,245,220,0.95)'; rr(x,y,w,h,16); ctx.fill();
+  ctx.strokeStyle=LINE; ctx.lineWidth=2; rr(x,y,w,h,16); ctx.stroke();
+}
+function rule(y,x0,x1){ ctx.fillStyle=LINE; for(var x=x0;x<=x1;x+=8) ctx.fillRect(x,y,2,2); }
+function blink(now,period){ return (now%period)<period*0.62; }
+
+var PERIM=2*(COLS-1)+2*(ROWS-1);
+function perim(s){                               // fractional position on the border ring
+  s=((s%PERIM)+PERIM)%PERIM;
+  var a=COLS-1, b=ROWS-1;
+  if(s<a) return {x:s,y:0,a:0};
+  s-=a; if(s<b) return {x:COLS-1,y:s,a:Math.PI/2};
+  s-=b; if(s<a) return {x:COLS-1-s,y:ROWS-1,a:Math.PI};
+  s-=a; return {x:0,y:ROWS-1-s,a:-Math.PI/2};
+}
+function drawIdle(now){                          // title-screen train, lapping the border
+  var s=now/1000*4.2, t=s-Math.floor(s), base=Math.floor(s)|0;
+  var savedH=hist, savedC=cells, savedD=dir, savedQ=queue, savedW=wagons;
+  var savedX=fixX, savedY=fixY, savedA=fixA, i, p, over;
+  hist=[]; cells=[]; queue=[]; fixX=fixY=fixA=0;
+  for(i=0;i<9;i++){                              // eight cars, lapping the border
+    p=perim(base+1-i);
+    hist.push({x:p.x,y:p.y});
+    if(i<8) cells.push({x:p.x,y:p.y});
+  }
+  over=delta(hist[0], perim(base+2));
+  dir=DIRN[over];
+  trainPoses(t);
+  wagons=[];                                     // a demonstration consist
+  for(i=0;i<7;i++) wagons.push({c:CARGO[i%CARGO.length], t:i%4});
+  odoPx=s*CELL;
+  ctx.globalAlpha=0.94;
+  drawTrain(now);
+  ctx.globalAlpha=1;
+  hist=savedH; cells=savedC; dir=savedD; queue=savedQ; wagons=savedW;
+  fixX=savedX; fixY=savedY; fixA=savedA;
+}
+function drawTitle(now){
+  panel(62,88,W-124,292);
+  pt('LONG HAUL',W/2+3,143,28,shade('#e5644e',0.04),'center',3);   // offset ghost print
+  pt('LONG HAUL',W/2,140,28,INK,'center',3);
+  tx('the Snake Game but It\'s a Freight Train.',W/2,174,8,DIM,'center',2);
+  rule(194,W/2-110,W/2+110);
+  var vw=pt(pad3(best),W/2+62,216,16,INK,'right',2);
+  tx('BEST',W/2+52-vw,216,11,DIM,'right',3);
+  var r=UI.wrap, k=1+bump*0.05;
+  ctx.save();
+  ctx.translate(r.x+r.w/2,r.y+r.h/2); ctx.scale(k,k); ctx.translate(-r.x-r.w/2,-r.y-r.h/2);
+  ctx.fillStyle=SOFT; rr(r.x,r.y,r.w,r.h,10); ctx.fill();
+  ctx.strokeStyle=LINE; ctx.lineWidth=2; rr(r.x,r.y,r.w,r.h,10); ctx.stroke();
+  pt('TUNNELS',r.x+16,r.y+r.h/2,11,INK,'left',2);
+  var pw=48, ph=20, qx=r.x+r.w-pw-10, qy=r.y+(r.h-ph)/2;
+  ctx.fillStyle=wrapMode?'#4a9d7f':'#cfc4ae'; rr(qx,qy,pw,ph,10); ctx.fill();
+  pt(wrapMode?'ON':'OFF',qx+pw/2,qy+ph/2,9,'#ffffff','center',1);
+  ctx.restore();
+  tx(wrapMode?'EDGES WRAP AROUND':'WALLS ARE FATAL',W/2,286,9,DIM,'center',2);
+  if(blink(now,1100)) pt('PRESS ANY KEY',W/2,318,11,INK,'center',2);
+  tx('ARROWS / WASD / SWIPE',W/2,348,9,DIM,'center',2);
+  tx('T TUNNELS   M SOUND   SPACE PAUSE',W/2,363,9,DIM,'center',2);
+}
+function drawPause(){
+  ctx.fillStyle='rgba(104,158,84,0.74)'; ctx.fillRect(BX-6,BY-6,BW+12,BH+12);
+  panel(140,180,W-280,96);
+  pt('PAUSED',W/2,214,18,INK,'center',3);
+  tx('ANY KEY TO RESUME',W/2,246,9,DIM,'center',2);
+}
+function drawOver(now){
+  var e=now-overAt;
+  if(state==='over' && e<380) return;            // let the crash play out first
+  var win=state==='win', head=win?'FULL LOAD':'DERAILED';
+  panel(96,126,W-192,244);
+  pt(head,W/2+2,171,22,shade(win?'#4a9d7f':'#e5644e',0.04),'center',3);
+  pt(head,W/2,168,22,INK,'center',3);
+  if(newRec && blink(now,900)) pt('NEW RECORD',W/2,198,10,'#c8952a','center',2);
+  pt(pad3(score),W/2,234,32,INK,'center',3);
+  tx('SCORE',W/2,262,9,DIM,'center',2);          // gold is worth 3, so score != wagons
+  tx('HAULED '+pad3(hauled)+'   BEST '+pad3(best),W/2,282,11,DIM,'center',2);
+  if(e>760){
+    if(blink(now,1100)) pt('PRESS ANY KEY',W/2,310,11,INK,'center',2);
+    var r=UI.menu;
+    ctx.strokeStyle=LINE; ctx.lineWidth=2; rr(r.x,r.y,r.w,r.h,9); ctx.stroke();
+    pt('MENU',r.x+r.w/2,r.y+r.h/2,9,DIM,'center',2);
+  }
+}
+
+/* ------------------------------ LOOP ----------------------------- */
+function fit(){
+  var r=boardEl.getBoundingClientRect();
+  if(r.width<4||r.height<4){ paintScene(); return; }   // wood first, clearing later
+  var s=Math.min(r.width/W,r.height/H);
+  var cw=Math.max(1,Math.floor(W*s)), ch=Math.max(1,Math.floor(H*s));
+  cv.style.width=cw+'px'; cv.style.height=ch+'px';
+  var dpr=Math.min(window.devicePixelRatio||1,3);
+  cv.width=Math.round(cw*dpr); cv.height=Math.round(ch*dpr);
+  ctx.imageSmoothingEnabled=false;               // hard edges, no resampling
+  sx=cv.width/W; sy=cv.height/H;
+  paintScene();                                  // the wood follows the board
+}
+function render(now,dt){
+  ctx.setTransform(sx,0,0,sy,0,0);
+  ctx.clearRect(0,0,W,H);                        // the countryside behind shows through
+  ctx.save();
+  if(shake>0){ var s=Math.round(shake*1.6);      // in whole art pixels, like the rest
+    ctx.translate(Math.round((Math.random()*2-1)*s)*3,Math.round((Math.random()*2-1)*s)*3); }
+  drawHud(); drawBoard();
+  ctx.save(); rr(BX-4,BY-4,BW+8,BH+8,10); ctx.clip();
+  if(state==='title'){ drawIdle(now); drawSmoke(dt); }
+  else{
+    var te=(state==='over'||state==='win')?1:ease(clamp(acc/tickMs,0,1));
+    if(predShift){                               // absorb the corner reshaping
+      var o=carPose(0,te,DIRI[dir]), p=carPose(0,te,DIRI[queue[0]]);
+      fixX+=o.x-p.x; fixY+=o.y-p.y; fixA+=angDiff(o.a,p.a); predShift=false;
+    }
+    trainPoses(te);
+    if(state==='play'&&lastHead){                // the rods beat out real distance
+      var dx=poses[0].x-lastHead.x, dy=poses[0].y-lastHead.y;
+      var dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<CELL*1.6) odoPx+=dist;
+    }
+    lastHead={x:poses[0].x,y:poses[0].y};
+    drawPops(now);
+    for(var fi=0;fi<foods.length;fi++)
+      drawContainer(px(foods[fi].x),py(foods[fi].y),foods[fi],now);
+    drawTrain(now);
+    drawSmoke(dt);                               // above the train: it billows up
+  }
+  ctx.restore();
+  if(state==='title') drawTitle(now);
+  else if(state==='pause') drawPause();
+  else if(state==='over'||state==='win') drawOver(now);
+  ctx.restore();
+}
+function frame(now){
+  raf=requestAnimationFrame(frame);
+  var dt=now-lastT; lastT=now;
+  if(dt<0) dt=0; if(dt>250) dt=250;              // a backgrounded tab must not fast-forward
+  if(state==='play'){
+    acc+=dt;
+    var guard=0;
+    while(acc>=tickMs && state==='play' && guard++<6){ acc-=tickMs; tick(); }
+    if(acc>tickMs) acc=tickMs;
+    var fast=(1000/tickMs)/BASE_TPS;
+    smokeT-=dt; if(smokeT<=0){ emitSmoke(fast); smokeT=Math.max(120,tickMs*(fast>1.4?1.0:1.3)); }
+  } else if(state==='title'){                    // she is under steam on the title too
+    smokeT-=dt; if(smokeT<=0){ emitSmoke(1); smokeT=130; }
+  }
+  if(squash>0) squash=Math.max(0,squash-dt/220);
+  if(shake>0)  shake =Math.max(0,shake -dt/380);
+  if(bump>0)   bump  =Math.max(0,bump  -dt/160);
+  if(pip){ pip.t-=dt/170; if(pip.t<=0) pip=null; }
+  var decay=Math.exp(-dt/38);                    // head fix eases out in ~150ms
+  fixX*=decay; fixY*=decay; fixA*=decay;
+  render(now,dt);
+}
+function boot(){
+  best=parseInt(store.get('lh.best','0'),10)||0;
+  wrapMode=store.get('lh.wrap','0')==='1';
+  muted=store.get('lh.mute','0')==='1';
+  var go=function(){
+    buildGeo(); buildYard(); buildTrack(); initFont(); fit();
+    if(window.ResizeObserver){ ro=new ResizeObserver(fit); ro.observe(boardEl); }
+    addEventListener('resize',fit); addEventListener('orientationchange',fit);
+    lastT=performance.now(); raf=requestAnimationFrame(frame);
+  };
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(go); else go();
+}
+addEventListener('pagehide',function(){
+  cancelAnimationFrame(raf); raf=0;
+  if(ro){ ro.disconnect(); ro=null; }
+  if(ac){ try{ ac.close(); }catch(e){} ac=null; }
+});
+boot();
+})();
+</script>
+</body>
+</html>
